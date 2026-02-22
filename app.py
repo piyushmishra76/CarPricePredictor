@@ -4,7 +4,9 @@ import pandas as pd
 import numpy as np
 
 # load trained pipeline
-model = pickle.load(open('CarPricePredictionResale.pkl','rb'))
+import os
+model_path = os.path.join(os.path.dirname(__file__), 'CarPricePredictionResale.pkl')
+model = pickle.load(open(model_path, 'rb'))
 
 st.title("🚗 Used Car Price Predictor")
 
@@ -29,4 +31,5 @@ if st.button("Predict Price"):
     
     except Exception as e:
         st.error("Prediction failed. Please check input values.")
+
         st.exception(e)
